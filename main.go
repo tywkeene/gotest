@@ -125,7 +125,9 @@ func parse(line string) {
 	case strings.HasPrefix(trimmed, "PASS"):
 		c = pass
 
-	// skipped
+	// skipped or no tests to run
+	case strings.Contains(trimmed, "[no tests to run]"):
+		fallthrough
 	case strings.HasPrefix(trimmed, "--- SKIP"):
 		c = skip
 
